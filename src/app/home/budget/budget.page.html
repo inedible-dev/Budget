@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ budget?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let income of budget.incomeExpense; trackBy: track" [id]="income?.id">
+      <ion-item-options side="end" (ionSwipe)="onDelete(income?.id, income?.money)">
+        <ion-item-option color="danger" expandable (click)="onDelete(income?.id, income?.money)">
+          <ion-icon name="trash" class="mr-[5px]"></ion-icon>
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-label>
+          <h1>
+            {{ income?.title }}
+          </h1>
+        </ion-label>
+        <p slot="end" [class]="'text-' + income?.color + ' ' + 'mr-[6px]'">
+          {{ income?.money | currency: budgetsService?.currency }}
+        </p>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <div class="fixed w-full flex flex-row justify-end bg-[#F7F7F7] border-[#C6C6C6] h-[50px] bottom-[80px]" style="border-top-width: 1;">
+    <h1 class="text-gray-700 text-[36px] mr-[10px]">{{ budget?.money | currency: budgetsService?.currency }}</h1>
+  </div>
+  <div class="fixed bottom-0 w-full flex flex-row justify-center items-center border-[#C6C6C6] bg-[#F7F7F7] h-[80px]"
+    style="border-top-width: 0.46px;">
+    <ion-button class="w-[57%]" color="success" [routerLink]="['/', 'home', 'add-income', budget?.id]">Add Income</ion-button>
+    <ion-button class="w-[57%]" color="danger" [routerLink]="['/', 'home', 'add-expense', budget?.id]">Add Expense</ion-button>
+  </div>
+</ion-content>
+
+

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Budget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="addBudgetForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="fixed">Name</ion-label>
+        <ion-input id="name" formControlName="name" placeholder="Name of the budget" class="caret-[#3880ff]"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="w-full flex flex-row justify-center mt-[20px]">
+      <ion-button type="submit">Confirm</ion-button>
+    </div>
+  </form>
+</ion-content>

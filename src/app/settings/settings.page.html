@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="currencyForm" (ngSubmit)="onCurrencyFormSubmitted()">
+    <ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label for="data" position="fixed">Currency</ion-label>
+          <ion-input id="data" class="caret" formControlName="data" class="caret-[#3880ff]" placeholder="Ex. $ or £"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+    <div class="fixed bottom-0 w-full flex flex-row justify-center border-[#C6C6C6] bg-[#F7F7F7] h-[80px]"
+      style="border-top-width: 0.46px;">
+      <ion-button type="submit" class="w-[98%]" color="primary">Apply</ion-button>
+    </div>
+  </form>
+</ion-content>

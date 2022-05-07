@@ -297,6 +297,27 @@
   resolved "https://repo.huaweicloud.com/repository/npm/@assemblyscript/loader/-/loader-0.10.1.tgz#70e45678f06c72fa2e350e8553ec4a4d72b92e06"
   integrity sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==
 
+"@awesome-cordova-plugins/core@^5.1.0":
+  version "5.41.0"
+  resolved "https://repo.huaweicloud.com/repository/npm/@awesome-cordova-plugins/core/-/core-5.41.0.tgz#cf73f98080eab907e2f082dc29288b7424292475"
+  integrity sha512-pWGAvz3bfiSx5k7iqDM4O6miJwIAGXhSM0odjMo4Vh/9gOGf603Whg57eeQwikmP/ysH+HKGCxJ885W+wPEpmw==
+  dependencies:
+    "@types/cordova" latest
+
+"@awesome-cordova-plugins/file-opener@^5.41.0":
+  version "5.41.0"
+  resolved "https://repo.huaweicloud.com/repository/npm/@awesome-cordova-plugins/file-opener/-/file-opener-5.41.0.tgz#a531830a803de2a88d1578a50ad528d83971bd90"
+  integrity sha512-CFdAum1EOxSdi+yMzEkOribU/joaDiqs1lL/ddxj7I78ryzlU+dj7rg6HZKvAN7aTjbWTX6A3p628eNpQoopgg==
+  dependencies:
+    "@types/cordova" latest
+
+"@awesome-cordova-plugins/in-app-purchase-2@^5.41.0":
+  version "5.41.0"
+  resolved "https://repo.huaweicloud.com/repository/npm/@awesome-cordova-plugins/in-app-purchase-2/-/in-app-purchase-2-5.41.0.tgz#77aec7e9dc7f9e4eb3cd12b5f2e1bbab83fb73fb"
+  integrity sha512-0sSJ+HTUqPkFjicYcDO1AfRR6DwRPDq+Fs7AA1i/UZW6zbMqcENPfkptHNGtDX5dn+mVhDngcHYTWMveqpbSRQ==
+  dependencies:
+    "@types/cordova" latest
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://repo.huaweicloud.com/repository/npm/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
@@ -1273,6 +1294,11 @@
   dependencies:
     tslib "^2.1.0"
 
+"@capacitor/filesystem@^1.1.0":
+  version "1.1.0"
+  resolved "https://repo.huaweicloud.com/repository/npm/@capacitor/filesystem/-/filesystem-1.1.0.tgz#0bd6a8bc185b7fd9a1219c3080ab26c2b54ea8b6"
+  integrity sha512-8O3UuvL8HNUEJvZnmn8yUmvgB1evtXfcF0oxIo3YbSlylqywJwS3JTiuhKmsvSxCdpbTy8IaTsutVh3gZgWbKg==
+
 "@capacitor/haptics@1.1.4":
   version "1.1.4"
   resolved "https://repo.huaweicloud.com/repository/npm/@capacitor/haptics/-/haptics-1.1.4.tgz#80d5bc4776740a227a8cb83c85fac4db1316db8e"
@@ -1838,6 +1864,11 @@
   version "0.4.1"
   resolved "https://repo.huaweicloud.com/repository/npm/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
   integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
+
+"@types/cordova@latest":
+  version "0.0.34"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/cordova/-/cordova-0.0.34.tgz#ea7addf74ecec3d7629827a0c39e2c9addc73d04"
+  integrity sha1-6nrd907Ow9dimCegw54smt3HPQQ=
 
 "@types/cors@^2.8.12":
   version "2.8.12"
@@ -3183,6 +3214,16 @@ copy-webpack-plugin@10.2.1:
     normalize-path "^3.0.0"
     schema-utils "^4.0.0"
     serialize-javascript "^6.0.0"
+
+cordova-plugin-file-opener2@^3.0.5:
+  version "3.0.5"
+  resolved "https://repo.huaweicloud.com/repository/npm/cordova-plugin-file-opener2/-/cordova-plugin-file-opener2-3.0.5.tgz#3bf481a724bcec9cfa2257a71915309df5ea5b4d"
+  integrity sha512-tjLHDamH5+y0bJZYVe2967L1S4R8tL4Y0rJUzJGoxsyiw3FUlrJNS199POOpzZZ6Xhlntn9a2o7+84r1dMN21A==
+
+cordova-plugin-purchase@^11.0.0:
+  version "11.0.0"
+  resolved "https://repo.huaweicloud.com/repository/npm/cordova-plugin-purchase/-/cordova-plugin-purchase-11.0.0.tgz#d49ddd0d521c4bae4022a5db3eec5bd22a6c7adb"
+  integrity sha512-FkgOyWBYS989dYpM6d3R36VrdsHweTbmp5y7ELa1GwMYq2AG+ImdB6DJcVpyU/se/zpTndBWH/zN9s3AFKfsLg==
 
 core-js-compat@^3.20.2, core-js-compat@^3.21.0:
   version "3.22.2"

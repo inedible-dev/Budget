@@ -1,11 +1,24 @@
 /* eslint-disable prefer-const */
 /* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AnimationController, NavController, Platform } from '@ionic/angular';
-import { Budget } from './../../budget.model';
-import { BudgetsServiceService } from './../../budgets-service.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  ActivatedRoute
+} from '@angular/router';
+import {
+  AnimationController,
+  NavController,
+  Platform
+} from '@ionic/angular';
+import {
+  Budget
+} from './../../budget.model';
+import {
+  BudgetsServiceService
+} from './../../budgets-service.service';
 
 @Component({
   selector: 'app-budget',

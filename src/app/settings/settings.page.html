@@ -16,10 +16,10 @@
           <ion-input id="data" class="caret" formControlName="data" class="caret-[#3880ff]" placeholder="Ex. $ or £"></ion-input>
         </ion-item>
         <ion-item class="text-center" *ngIf="purchaseService.isPro === false" detail="false">
-          <ion-label color="primary">Export CSV (PRO)</ion-label>
+          <ion-label color="primary">Export JSON (PRO)</ion-label>
         </ion-item>
         <ion-item class="text-center" (click)="onExportPressed()" *ngIf="purchaseService.isPro === true" button detail="false">
-          <ion-label color="primary">Export CSV</ion-label>
+          <ion-label color="primary">Export JSON</ion-label>
         </ion-item>
         <ion-item class="text-center" *ngIf="purchaseService.isPro === false" button detail="false" (click)="onUpgradePressed()">
           <ion-label color="danger">Upgrade to PRO</ion-label>

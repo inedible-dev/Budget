@@ -14,13 +14,15 @@ import { Budget } from './budget.model';
 import * as localforage from './../localForage/dist/localforage';
 import saveAs from './../SaveFile/FileSaver.min';
 import { Platform } from '@ionic/angular';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BudgetsServiceService {
 
-  currency: string = '￡';
+  currency: string = '£';
 
 
 
@@ -28,7 +30,7 @@ export class BudgetsServiceService {
 
 
 
-  constructor(private platform: Platform) { }
+  constructor(private platform: Platform, private fileOpener: FileOpener) { }
 
   convertToCSV(objArray) {
     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
@@ -48,13 +50,20 @@ export class BudgetsServiceService {
     return str;
   }
 
-  convert() {
+  async convert() {
     if (this.platform.is('desktop')) {
-      const csv = this.convertToCSV(this.budgets);
-      var blob = new Blob([csv],
+      var blob = new Blob([JSON.stringify(this.budgets)],
         { type: "text/plain;charset=utf-8" });
-      saveAs(blob, "data.csv");
+      saveAs(blob, "data.json");
     } else {
+      const result = await Filesystem.writeFile({
+        path: 'data.json',
+        data: JSON.stringify(this.budgets),
+        directory: Directory.Documents,
+        encoding: Encoding.UTF8
+      })
+
+      this.fileOpener.showOpenWithDialog(result.uri, 'application/json')
 
     }
   }
@@ -74,7 +83,7 @@ export class BudgetsServiceService {
 
   async checkCurrency() {
     if (!localStorage.getItem('currency')) {
-      localStorage.setItem('currency', '￡');
+      localStorage.setItem('currency', '£');
     } else {
       this.currency = await localStorage.getItem('currency');
     }

@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable @typescript-eslint/semi */
+/* eslint-disable curly */
+/* eslint-disable eqeqeq */
+/* eslint-disable guard-for-in */
+/* eslint-disable @typescript-eslint/prefer-for-of */
+/* eslint-disable no-var */
 /* eslint-disable prefer-const */
 /* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
@@ -19,6 +26,11 @@ import {
 import {
   BudgetsServiceService
 } from './../../budgets-service.service';
+import saveAs from './../../../SaveFile/FileSaver.min.js';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+import { PurchaseService } from './../../purchase.service'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-budget',
@@ -30,7 +42,7 @@ export class BudgetPage implements OnInit {
   budget: Budget;
   budgetId: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform) { }
+  constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, private fileOpener: FileOpener, private purchaseService: PurchaseService, private alertController: AlertController) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(e => {
@@ -77,6 +89,51 @@ export class BudgetPage implements OnInit {
     });
     this.budgetsService.budgets = this.budgetsService.budgets.concat(...[this.budget]);
 
+  }
+
+  convertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+      var line = '';
+      for (var index in array[i]) {
+        if (line != '') line += ','
+
+        line += array[i][index];
+      }
+
+      str += line + '\r\n';
+    }
+
+    return str;
+  }
+  async onExportPressed() {
+    if (this.purchaseService.isPro == true) {
+      if (this.platform.is('desktop')) {
+        var blob = new Blob([this.convertToCSV(this.budget)],
+          { type: "text/plain;charset=utf-8" });
+        saveAs(blob, "data.csv");
+      } else {
+        const result = await Filesystem.writeFile({
+          path: 'data.csv',
+          data: this.convertToCSV(this.budget),
+          directory: Directory.Documents,
+          encoding: Encoding.UTF8
+        })
+
+        this.fileOpener.showOpenWithDialog(result.uri, 'application/csv')
+
+      }
+    } else {
+      this.alertController.create({
+        header: 'Pro upgrade required.',
+        message: 'Pro upgrade is required to use export CSV function.',
+        buttons: ['Dismiss']
+      }).then(a => {
+        a.present();
+      })
+    }
   }
 
 }

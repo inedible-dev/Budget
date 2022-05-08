@@ -30,6 +30,7 @@ export class SettingsPage implements OnInit {
         .owned(() => {
           console.log('owned');
           purchaseService.isPro = true;
+          localStorage.setItem('isPro', 'true');
         })
         .valid(() => {
           console.log('valid');
@@ -38,6 +39,7 @@ export class SettingsPage implements OnInit {
         this.store.when("product").approved((p: IAPProduct) => p.finish());
         this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
           purchaseService.isPro = true;
+          localStorage.setItem('isPro', 'true');
         });
       });
       this.store.refresh();
@@ -57,6 +59,10 @@ export class SettingsPage implements OnInit {
   }
 
   onUpgradePressed() {
+    // if (this.platform.is('mobileweb')) {
+    //   alert('Buying...');
+    //   this.purchaseService.isPro = true;
+    // }
     this.store.order("BUDJET1PRO");
   }
 

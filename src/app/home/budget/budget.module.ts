@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BudgetPageRoutingModule } from './budget-routing.module';
 
 import { BudgetPage } from './budget.page';
+import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { BudgetPage } from './budget.page';
     IonicModule,
     BudgetPageRoutingModule
   ],
-  declarations: [BudgetPage]
+  declarations: [BudgetPage],
+  providers: [FileOpener]
 })
-export class BudgetPageModule {}
+export class BudgetPageModule { }

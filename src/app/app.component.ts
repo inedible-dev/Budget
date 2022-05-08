@@ -25,6 +25,7 @@ export class AppComponent {
         .owned(() => {
           console.log('owned');
           purchaseService.isPro = true;
+          localStorage.setItem('isPro', 'true');
         })
         .valid(() => {
           console.log('valid');
@@ -33,16 +34,23 @@ export class AppComponent {
         this.store.when("product").approved((p: IAPProduct) => p.finish());
         this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
           purchaseService.isPro = true;
+          localStorage.setItem('isPro', 'true');
         });
       });
       this.store.refresh();
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.warn('ngOnInit()');
     StatusBar.setStyle({ style: Style.Light });
     this.budgetsService.checkCurrency();
     if (this.platform.is('desktop')) {
+      this.purchaseService.isPro = true;
+    }
+    const localStoragePro = await localStorage.getItem('isPro');
+    if (localStoragePro === 'true') {
+      console.log('isPro = true');
       this.purchaseService.isPro = true;
     }
   }

@@ -1,7 +1,7 @@
 export interface IncomeExpense {
-  id: string;
+  id?: string;
   title: string;
   money: number;
-  color: string;
+  color?: string;
 }
 

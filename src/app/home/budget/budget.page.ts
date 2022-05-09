@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable curly */
@@ -31,6 +32,7 @@ import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { PurchaseService } from './../../purchase.service'
 import { AlertController } from '@ionic/angular';
+import { IncomeExpense } from './../../incomeExpense.model'
 
 @Component({
   selector: 'app-budget',
@@ -43,8 +45,12 @@ export class BudgetPage implements OnInit {
   budgetId: string;
 
   constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, private fileOpener: FileOpener, private purchaseService: PurchaseService, private alertController: AlertController) { }
+  // ngOnInit() {
+  //   console.log('ngOnInit')
+  // }
 
   ngOnInit() {
+    console.log('ngOnInit()')
     this.activatedRoute.paramMap.subscribe(e => {
       if (!e.get('budgetId')) {
         this.navController.navigateBack('/home');
@@ -56,6 +62,20 @@ export class BudgetPage implements OnInit {
       this.budgetId = e.get('budgetId');
     });
   }
+
+  // ionViewWillEnter() {
+  //   console.log('ionViewWillEnter')
+  //   this.activatedRoute.paramMap.subscribe(e => {
+  //     if (!e.get('budgetId')) {
+  //       this.navController.navigateBack('/home');
+  //       return;
+  //     }
+  //     this.budget = this.budgetsService.budgets.find(p => {
+  //       return p.id === e.get('budgetId');
+  //     });
+  //     this.budgetId = e.get('budgetId');
+  //   });
+  // }
 
   addIncomePressed() {
     console.log('add Income.');
@@ -109,20 +129,30 @@ export class BudgetPage implements OnInit {
     return str;
   }
   async onExportPressed() {
+    const newBudget: IncomeExpense[] = this.budget.incomeExpense;
+    var banana = newBudget.filter(e => {
+      delete e.id;
+      delete e.color
+      return e;
+    })
+    console.log(this.convertToCSV([...banana]));
     if (this.purchaseService.isPro == true) {
       if (this.platform.is('desktop')) {
-        var blob = new Blob([this.convertToCSV(this.budget)],
+        var blob = new Blob([this.convertToCSV([...banana])],
           { type: "text/plain;charset=utf-8" });
         saveAs(blob, "data.csv");
       } else {
         const result = await Filesystem.writeFile({
           path: 'data.csv',
-          data: this.convertToCSV(this.budget),
+          data: this.convertToCSV([...banana]),
           directory: Directory.Documents,
           encoding: Encoding.UTF8
         })
 
-        this.fileOpener.showOpenWithDialog(result.uri, 'application/csv')
+        await this.fileOpener.showOpenWithDialog(result.uri, 'application/csv')
+        // this.navController.navigateRoot('/home', { animated: true, animationDirection: 'back' });
+        window.location.replace('/home')
+        // window.location.reload();
 
       }
     } else {

@@ -136,22 +136,24 @@ export class BudgetPage implements OnInit {
       return e;
     })
     console.log(this.convertToCSV([...banana]));
+    const dataString = this.budget.title + '\r\n' + this.convertToCSV([...banana]) + '\r\n' + 'TOTAL,' + this.budget.money;
     if (this.purchaseService.isPro == true) {
       if (this.platform.is('desktop')) {
-        var blob = new Blob([this.convertToCSV([...banana])],
+        var blob = new Blob([dataString],
           { type: "text/plain;charset=utf-8" });
         saveAs(blob, "data.csv");
+        window.location.replace('/home');
       } else {
         const result = await Filesystem.writeFile({
           path: 'data.csv',
-          data: this.convertToCSV([...banana]),
+          data: dataString,
           directory: Directory.Documents,
           encoding: Encoding.UTF8
         })
 
         await this.fileOpener.showOpenWithDialog(result.uri, 'application/csv')
         // this.navController.navigateRoot('/home', { animated: true, animationDirection: 'back' });
-        window.location.replace('/home')
+        window.location.replace('/home');
         // window.location.reload();
 
       }

@@ -20,10 +20,10 @@
     <ion-list>
       <ion-item-sliding *ngFor="let budget of budgets; trackBy:track" [id]="budget?.id">
         <ion-item-options side="end" (ionSwipe)="onDeletePressed(budget?.id)">
-          <ion-item-option color="primary">
+          <!-- <ion-item-option color="primary">
             <ion-icon name="pencil" class="mr-[5px]"></ion-icon>
             Edit
-          </ion-item-option>
+          </ion-item-option> -->
           <ion-item-option color="danger" (click)="onDeletePressed(budget?.id)" expandable>
             <ion-icon name="trash" class="mr-[5px]"></ion-icon>
             Delete

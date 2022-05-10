@@ -45,9 +45,9 @@ export class AppComponent {
     console.warn('ngOnInit()');
     StatusBar.setStyle({ style: Style.Light });
     this.budgetsService.checkCurrency();
-    if (this.platform.is('desktop')) {
-      this.purchaseService.isPro = true;
-    }
+    // if (this.platform.is('desktop')) {
+    //   this.purchaseService.isPro = true;
+    // }
     const localStoragePro = await localStorage.getItem('isPro');
     if (localStoragePro === 'true') {
       console.log('isPro = true');

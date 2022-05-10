@@ -59,11 +59,12 @@ export class SettingsPage implements OnInit {
   }
 
   onUpgradePressed() {
-    // if (this.platform.is('mobileweb')) {
-    //   alert('Buying...');
-    //   this.purchaseService.isPro = true;
-    // }
+    if (this.platform.is('desktop')) {
+      alert('Buying...');
+      this.purchaseService.isPro = true;
+    }
     this.store.order("BUDJET1PRO");
+    this.navController.navigateRoot('/home', { animated: true, animationDirection: 'back' });
   }
 
   onExportPressed() {

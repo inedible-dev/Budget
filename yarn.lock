@@ -297,7 +297,7 @@
   resolved "https://repo.huaweicloud.com/repository/npm/@assemblyscript/loader/-/loader-0.10.1.tgz#70e45678f06c72fa2e350e8553ec4a4d72b92e06"
   integrity sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==
 
-"@awesome-cordova-plugins/core@^5.1.0":
+"@awesome-cordova-plugins/core@^5.41.0":
   version "5.41.0"
   resolved "https://repo.huaweicloud.com/repository/npm/@awesome-cordova-plugins/core/-/core-5.41.0.tgz#cf73f98080eab907e2f082dc29288b7424292475"
   integrity sha512-pWGAvz3bfiSx5k7iqDM4O6miJwIAGXhSM0odjMo4Vh/9gOGf603Whg57eeQwikmP/ysH+HKGCxJ885W+wPEpmw==
@@ -1393,6 +1393,15 @@
     jsonc-parser "^3.0.0"
     tslib "^2.0.0"
 
+"@ionic/cli-framework-output@2.2.4":
+  version "2.2.4"
+  resolved "https://repo.huaweicloud.com/repository/npm/@ionic/cli-framework-output/-/cli-framework-output-2.2.4.tgz#177d8388140a2246dec111385ee63bf0343b013d"
+  integrity sha512-YdaXtHHg0zT1JSFlGrbTWe6uzD6u+w5yHE+aM7Js/3BNLYKIYngliMoojGxwNHbqMPNuvDzWMDAbxteY5u0vKg==
+  dependencies:
+    "@ionic/utils-terminal" "2.3.2"
+    debug "^4.0.0"
+    tslib "^2.0.1"
+
 "@ionic/cli-framework-output@^2.2.1":
   version "2.2.3"
   resolved "https://repo.huaweicloud.com/repository/npm/@ionic/cli-framework-output/-/cli-framework-output-2.2.3.tgz#61437c4ae1e301daba9fade5820d06552b2d5744"
@@ -1402,6 +1411,27 @@
     debug "^4.0.0"
     tslib "^2.0.1"
 
+"@ionic/cli-framework@5.1.2":
+  version "5.1.2"
+  resolved "https://repo.huaweicloud.com/repository/npm/@ionic/cli-framework/-/cli-framework-5.1.2.tgz#32fa069fb943cfcc5d7b5d00e16985fabcfc6fc1"
+  integrity sha512-7z9cCJy832lQTZrl8pqxZS+QhjYEgvguPOktkD7yh3I0Yv6QpQJecKb5Amyx2UXv4ImmlfJkyAC3tmQdPRgEAw==
+  dependencies:
+    "@ionic/cli-framework-output" "2.2.4"
+    "@ionic/utils-array" "2.1.5"
+    "@ionic/utils-fs" "3.1.5"
+    "@ionic/utils-object" "2.1.5"
+    "@ionic/utils-process" "2.1.9"
+    "@ionic/utils-stream" "3.1.5"
+    "@ionic/utils-subprocess" "2.1.10"
+    "@ionic/utils-terminal" "2.3.2"
+    chalk "^4.0.0"
+    debug "^4.0.0"
+    lodash "^4.17.5"
+    minimist "^1.2.0"
+    rimraf "^3.0.0"
+    tslib "^2.0.1"
+    write-file-atomic "^3.0.0"
+
 "@ionic/core@^6.1.2":
   version "6.1.2"
   resolved "https://repo.huaweicloud.com/repository/npm/@ionic/core/-/core-6.1.2.tgz#fbf4073afacdb794a7d957a04bdc070b1d31f6d3"
@@ -1410,6 +1440,17 @@
     "@stencil/core" "^2.14.2"
     ionicons "^6.0.0"
     tslib "^2.1.0"
+
+"@ionic/lab@3.2.12":
+  version "3.2.12"
+  resolved "https://repo.huaweicloud.com/repository/npm/@ionic/lab/-/lab-3.2.12.tgz#3f5aa67bd246acecba4d7cce0f35b73b793bbdc3"
+  integrity sha512-L/iLhFfeMgITtv0X+ELv+/WSlr6P+RcKTY6Mg1UNuuMRHSGBV/tJoVaWWreiZK2lA2UyK1J2fPJQagDM7NGRmQ==
+  dependencies:
+    "@ionic/cli-framework" "5.1.2"
+    "@ionic/utils-fs" "3.1.5"
+    chalk "^4.0.0"
+    express "^4.16.2"
+    tslib "^2.0.1"
 
 "@ionic/utils-array@2.1.5":
   version "2.1.5"
@@ -1448,11 +1489,37 @@
     tree-kill "^1.2.2"
     tslib "^2.0.1"
 
+"@ionic/utils-process@2.1.9":
+  version "2.1.9"
+  resolved "https://repo.huaweicloud.com/repository/npm/@ionic/utils-process/-/utils-process-2.1.9.tgz#db7ce0bdd05551d9c8881af6fdabafc9d1259c51"
+  integrity sha512-+RD2mcwh7jtAtkvCFw1BBnUHg/UYgBiYxpXPuXUBSitHHAgVk1zDfYBTM31EKU5FGb5nVU/HkjeYGRHEmj4MPA==
+  dependencies:
+    "@ionic/utils-object" "2.1.5"
+    "@ionic/utils-terminal" "2.3.2"
+    debug "^4.0.0"
+    signal-exit "^3.0.3"
+    tree-kill "^1.2.2"
+    tslib "^2.0.1"
+
 "@ionic/utils-stream@3.1.5":
   version "3.1.5"
   resolved "https://repo.huaweicloud.com/repository/npm/@ionic/utils-stream/-/utils-stream-3.1.5.tgz#c8ec9fba30952d5e53a62ff2a3dad0d4283f2775"
   integrity sha512-hkm46uHvEC05X/8PHgdJi4l4zv9VQDELZTM+Kz69odtO9zZYfnt8DkfXHJqJ+PxmtiE5mk/ehJWLnn/XAczTUw==
   dependencies:
+    debug "^4.0.0"
+    tslib "^2.0.1"
+
+"@ionic/utils-subprocess@2.1.10":
+  version "2.1.10"
+  resolved "https://repo.huaweicloud.com/repository/npm/@ionic/utils-subprocess/-/utils-subprocess-2.1.10.tgz#a0f481132730bd41680ebe3774e46d6058ab9387"
+  integrity sha512-X5wXiA4moEzbvchWqa7kwnYw3IqFyP1otlN/APFOmzmpsQWdyz5LRqqMhPozJeN11Mi3pwNR+BCQWd6vFBHTTg==
+  dependencies:
+    "@ionic/utils-array" "2.1.5"
+    "@ionic/utils-fs" "3.1.5"
+    "@ionic/utils-process" "2.1.9"
+    "@ionic/utils-stream" "3.1.5"
+    "@ionic/utils-terminal" "2.3.2"
+    cross-spawn "^7.0.3"
     debug "^4.0.0"
     tslib "^2.0.1"
 
@@ -1474,6 +1541,20 @@
   version "2.3.1"
   resolved "https://repo.huaweicloud.com/repository/npm/@ionic/utils-terminal/-/utils-terminal-2.3.1.tgz#57bb2f6e4015cb655d004bd2891629b2aea9f06b"
   integrity sha512-cglsSd2AckI3Ldtdfczeq64vIIDjtPspV5QJtky8f8uIdxkeOIGeRV7bCj1+BEf1hyo+ZuggQxLviHnbMZhiRw==
+  dependencies:
+    debug "^4.0.0"
+    signal-exit "^3.0.3"
+    slice-ansi "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+    tslib "^2.0.1"
+    untildify "^4.0.0"
+    wrap-ansi "^7.0.0"
+
+"@ionic/utils-terminal@2.3.2":
+  version "2.3.2"
+  resolved "https://repo.huaweicloud.com/repository/npm/@ionic/utils-terminal/-/utils-terminal-2.3.2.tgz#99f565a1a0e4e08b424c9022994a074d52238d0e"
+  integrity sha512-/yNrEZEDsjzTkpDWTsBjZeWJj2AkMwidyL72kqGkIDGt+J4sL/YVsA9CE3P9P1FAEm8jJmTy/EYAhC6EwA9f1A==
   dependencies:
     debug "^4.0.0"
     signal-exit "^3.0.3"
@@ -4199,6 +4280,43 @@ exit@^0.1.2:
   resolved "https://repo.huaweicloud.com/repository/npm/exit/-/exit-0.1.2.tgz#0632638f8d877cc82107d30a0fff1a17cba1cd0c"
   integrity sha1-BjJjj42HfMghB9MKD/8aF8uhzQw=
 
+express@^4.16.2:
+  version "4.18.1"
+  resolved "https://repo.huaweicloud.com/repository/npm/express/-/express-4.18.1.tgz#7797de8b9c72c857b9cd0e14a5eea80666267caf"
+  integrity sha512-zZBcOX9TfehHQhtupq57OF8lFZ3UZi08Y97dwFCkD8p9d/d2Y3M+ykKcwaMDEL+4qyUolgBDX6AblpR3fL212Q==
+  dependencies:
+    accepts "~1.3.8"
+    array-flatten "1.1.1"
+    body-parser "1.20.0"
+    content-disposition "0.5.4"
+    content-type "~1.0.4"
+    cookie "0.5.0"
+    cookie-signature "1.0.6"
+    debug "2.6.9"
+    depd "2.0.0"
+    encodeurl "~1.0.2"
+    escape-html "~1.0.3"
+    etag "~1.8.1"
+    finalhandler "1.2.0"
+    fresh "0.5.2"
+    http-errors "2.0.0"
+    merge-descriptors "1.0.1"
+    methods "~1.1.2"
+    on-finished "2.4.1"
+    parseurl "~1.3.3"
+    path-to-regexp "0.1.7"
+    proxy-addr "~2.0.7"
+    qs "6.10.3"
+    range-parser "~1.2.1"
+    safe-buffer "5.2.1"
+    send "0.18.0"
+    serve-static "1.15.0"
+    setprototypeof "1.2.0"
+    statuses "2.0.1"
+    type-is "~1.6.18"
+    utils-merge "1.0.1"
+    vary "~1.1.2"
+
 express@^4.17.1:
   version "4.18.0"
   resolved "https://repo.huaweicloud.com/repository/npm/express/-/express-4.18.0.tgz#7a426773325d0dd5406395220614c0db10b6e8e2"
@@ -5247,7 +5365,7 @@ is-symbol@^1.0.2, is-symbol@^1.0.3:
   dependencies:
     has-symbols "^1.0.2"
 
-is-typedarray@~1.0.0:
+is-typedarray@^1.0.0, is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://repo.huaweicloud.com/repository/npm/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
@@ -5766,7 +5884,7 @@ lodash.truncate@^4.4.2:
   resolved "https://repo.huaweicloud.com/repository/npm/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
   integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
 
-lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21:
+lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.5:
   version "4.17.21"
   resolved "https://repo.huaweicloud.com/repository/npm/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -8377,6 +8495,13 @@ typed-assert@^1.0.8:
   resolved "https://repo.huaweicloud.com/repository/npm/typed-assert/-/typed-assert-1.0.9.tgz#8af9d4f93432c4970ec717e3006f33f135b06213"
   integrity sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==
 
+typedarray-to-buffer@^3.1.5:
+  version "3.1.5"
+  resolved "https://repo.huaweicloud.com/repository/npm/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"
+  integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
+  dependencies:
+    is-typedarray "^1.0.0"
+
 typescript@^4.5.3:
   version "4.6.3"
   resolved "https://repo.huaweicloud.com/repository/npm/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
@@ -8757,6 +8882,16 @@ wrappy@1:
   version "1.0.2"
   resolved "https://repo.huaweicloud.com/repository/npm/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
+
+write-file-atomic@^3.0.0:
+  version "3.0.3"
+  resolved "https://repo.huaweicloud.com/repository/npm/write-file-atomic/-/write-file-atomic-3.0.3.tgz#56bd5c5a5c70481cd19c571bd39ab965a5de56e8"
+  integrity sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==
+  dependencies:
+    imurmurhash "^0.1.4"
+    is-typedarray "^1.0.0"
+    signal-exit "^3.0.2"
+    typedarray-to-buffer "^3.1.5"
 
 ws@^8.1.0:
   version "8.5.0"

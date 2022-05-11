@@ -28,3 +28,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "SFPro";
+    src: local("SFPro"), url(./assets/SF-Pro.ttf);
+}

@@ -46,7 +46,7 @@ export class BudgetPage implements OnInit {
   budgetId: string;
   product: IAPProduct;
 
-  constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, private fileOpener: FileOpener, private purchaseService: PurchaseService, private alertController: AlertController, private store: InAppPurchase2) { }
+  constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, public platform: Platform, private fileOpener: FileOpener, private purchaseService: PurchaseService, private alertController: AlertController, private store: InAppPurchase2) { }
   // ngOnInit() {
   //   console.log('ngOnInit')
   // }
@@ -131,15 +131,16 @@ export class BudgetPage implements OnInit {
     return str;
   }
   async onExportPressed() {
-    const newBudget: IncomeExpense[] = this.budget.incomeExpense;
-    var banana = newBudget.filter(e => {
-      delete e.id;
-      delete e.color
-      return e;
-    })
-    console.log(this.convertToCSV([...banana]));
-    const dataString = this.budget.title + '\r\n' + this.convertToCSV([...banana]) + '\r\n' + 'TOTAL,' + this.budget.money;
+    
     if (this.purchaseService.isPro == true) {
+      const newBudget: IncomeExpense[] = this.budget.incomeExpense;
+      var banana = newBudget.filter(e => {
+        delete e.id;
+        delete e.color
+        return e;
+      })
+      console.log(this.convertToCSV([...banana]));
+      const dataString = this.budget.title + '\r\n' + this.convertToCSV([...banana]) + '\r\n' + 'TOTAL,' + this.budget.money;
       if (this.platform.is('desktop')) {
         var blob = new Blob([dataString],
           { type: "text/plain;charset=utf-8" });

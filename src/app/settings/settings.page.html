@@ -22,7 +22,10 @@
           <ion-label color="primary">Export JSON</ion-label>
         </ion-item>
         <ion-item class="text-center" *ngIf="purchaseService.isPro === false" button detail="false" (click)="onUpgradePressed()">
-          <ion-label color="danger">Upgrade to PRO</ion-label>
+          <ion-label color="danger">Upgrade to PRO for just {{ product?.price }}</ion-label>
+        </ion-item>
+        <ion-item class="text-center" *ngIf="purchaseService.isPro === false" button detail="false" (click)="store.refresh()">
+          <ion-label color="primary">Restore Purchase</ion-label>
         </ion-item>
       </ion-list>
     </ion-list>

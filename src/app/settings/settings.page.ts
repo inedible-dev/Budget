@@ -15,39 +15,45 @@ import { PurchaseService } from '../purchase.service';
 export class SettingsPage implements OnInit {
 
   currency: string;
+  product: IAPProduct;
 
   currencyForm = this.formBuilder.group({
     data: this.budgetsService.currency
   });
 
-  constructor(public budgetsService: BudgetsServiceService, private formBuilder: FormBuilder, private navController: NavController, private store: InAppPurchase2, public purchaseService: PurchaseService, private platform: Platform) {
-    platform.ready().then(() => {
-      this.store.register({
-        id: "BUDJET1PRO",
-        type: this.store.NON_CONSUMABLE,
-      });
-      this.store.when("BUDJET1PRO")
-        .owned(() => {
-          console.log('owned');
-          purchaseService.isPro = true;
-          localStorage.setItem('isPro', 'true');
-        })
-        .valid(() => {
-          console.log('valid');
-        });
-      this.store.ready(() => {
-        this.store.when("product").approved((p: IAPProduct) => p.finish());
-        this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
-          purchaseService.isPro = true;
-          localStorage.setItem('isPro', 'true');
-        });
-      });
-      this.store.refresh();
-    });
+  constructor(public budgetsService: BudgetsServiceService, private formBuilder: FormBuilder, private navController: NavController, public store: InAppPurchase2, public purchaseService: PurchaseService, private platform: Platform) {
+    // platform.ready().then(() => {
+    //   this.store.register({
+    //     id: "BUDJET1PRO",
+    //     type: this.store.NON_CONSUMABLE,
+    //   });
+    //   this.store.when("BUDJET1PRO")
+    //     .owned(() => {
+    //       console.log('owned');
+    //       purchaseService.isPro = true;
+    //       localStorage.setItem('isPro', 'true');
+    //     })
+    //     .valid(() => {
+    //       console.log('valid');
+    //     });
+    //   this.store.ready(() => {
+    //     this.store.when("product").approved((p: IAPProduct) => p.finish());
+    //     this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
+    //       purchaseService.isPro = true;
+    //       localStorage.setItem('isPro', 'true');
+    //     });
+    //   });
+    //   this.store.refresh();
+    // });
   }
 
   ngOnInit() {
     this.currency = this.budgetsService.currency;
+    this.product = this.store.get('BUDJET1PRO');
+  }
+
+  ionViewWillEnter() {
+    this.product = this.store.get('BUDJET1PRO');
   }
 
   onCurrencyFormSubmitted() {
@@ -64,7 +70,7 @@ export class SettingsPage implements OnInit {
       this.purchaseService.isPro = true;
     }
     this.store.order("BUDJET1PRO");
-    this.navController.navigateRoot('/home', { animated: true, animationDirection: 'back' });
+    // this.navController.navigateRoot('/home', { animated: true, animationDirection: 'back' });
   }
 
   onExportPressed() {

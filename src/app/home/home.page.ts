@@ -11,6 +11,7 @@ import { BudgetsServiceService } from '../budgets-service.service';
 import { AnimationController, Platform } from '@ionic/angular';
 import { PurchaseService } from './../purchase.service';
 import { InAppPurchase2, IAPProduct } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
+import {NavController} from '@ionic/angular'
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,7 @@ export class HomePage {
 
 
 
-  constructor(public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, public purchaseService: PurchaseService, private store: InAppPurchase2) {
+  constructor(public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, public purchaseService: PurchaseService, private store: InAppPurchase2, private navController: NavController) {
     platform.ready().then(() => {
       this.store.register({
         id: "BUDJET1PRO",
@@ -43,6 +44,8 @@ export class HomePage {
         this.store.when("product").approved((p: IAPProduct) => p.finish());
         this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
           purchaseService.isPro = true;
+          navController.navigateRoot('/home', {animated: true ,animationDirection: 'back'})
+
         });
       });
       this.store.refresh();

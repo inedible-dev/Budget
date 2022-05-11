@@ -33,6 +33,7 @@ import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { PurchaseService } from './../../purchase.service'
 import { AlertController } from '@ionic/angular';
 import { IncomeExpense } from './../../incomeExpense.model'
+import {IAPProduct, InAppPurchase2} from '@awesome-cordova-plugins/in-app-purchase-2/ngx'
 
 @Component({
   selector: 'app-budget',
@@ -43,8 +44,9 @@ export class BudgetPage implements OnInit {
 
   budget: Budget;
   budgetId: string;
+  product: IAPProduct;
 
-  constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, private fileOpener: FileOpener, private purchaseService: PurchaseService, private alertController: AlertController) { }
+  constructor(private activatedRoute: ActivatedRoute, private navController: NavController, public budgetsService: BudgetsServiceService, private animationController: AnimationController, private platform: Platform, private fileOpener: FileOpener, private purchaseService: PurchaseService, private alertController: AlertController, private store: InAppPurchase2) { }
   // ngOnInit() {
   //   console.log('ngOnInit')
   // }

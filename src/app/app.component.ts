@@ -15,30 +15,30 @@ import { PurchaseService } from './purchase.service';
 })
 export class AppComponent {
   constructor(private budgetsService: BudgetsServiceService, private store: InAppPurchase2, public platform: Platform, private purchaseService: PurchaseService) {
-    platform.ready().then(() => {
-      store.verbosity = this.store.DEBUG;
-      this.store.register({
-        id: "BUDJET1PRO",
-        type: this.store.NON_CONSUMABLE,
-      });
-      this.store.when("BUDJET1PRO")
-        .owned(() => {
-          console.log('owned');
-          purchaseService.isPro = true;
-          localStorage.setItem('isPro', 'true');
-        })
-        .valid(() => {
-          console.log('valid');
-        });
-      this.store.ready(() => {
-        this.store.when("product").approved((p: IAPProduct) => p.finish());
-        this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
-          purchaseService.isPro = true;
-          localStorage.setItem('isPro', 'true');
-        });
-      });
-      this.store.refresh();
-    });
+    // platform.ready().then(() => {
+    //   store.verbosity = this.store.DEBUG;
+    //   this.store.register({
+    //     id: "BUDJET1PRO",
+    //     type: this.store.NON_CONSUMABLE,
+    //   });
+    //   this.store.when("BUDJET1PRO")
+    //     .owned(() => {
+    //       console.log('owned');
+    //       purchaseService.isPro = true;
+    //       localStorage.setItem('isPro', 'true');
+    //     })
+    //     .valid(() => {
+    //       console.log('valid');
+    //     });
+    //   this.store.ready(() => {
+    //     this.store.when("product").approved((p: IAPProduct) => p.finish());
+    //     this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
+    //       purchaseService.isPro = true;
+    //       localStorage.setItem('isPro', 'true');
+    //     });
+    //   });
+    //   this.store.refresh();
+    // });
   }
 
   async ngOnInit() {

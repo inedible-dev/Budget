@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/semi */
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
@@ -11,7 +12,7 @@ import { BudgetsServiceService } from '../budgets-service.service';
 import { AnimationController, Platform } from '@ionic/angular';
 import { PurchaseService } from './../purchase.service';
 import { InAppPurchase2, IAPProduct } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
-import {NavController} from '@ionic/angular'
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -44,7 +45,7 @@ export class HomePage {
         this.store.when("product").approved((p: IAPProduct) => p.finish());
         this.store.when("BUDJET1PRO").owned((p: IAPProduct) => {
           purchaseService.isPro = true;
-          navController.navigateRoot('/home', {animated: true ,animationDirection: 'back'})
+          navController.navigateRoot('/home', { animated: true, animationDirection: 'back' });
 
         });
       });
@@ -65,7 +66,9 @@ export class HomePage {
   ionViewDidEnter() {
     this.budgets = this.budgetsService.budgets as Budget[];
     console.log('ionView', this.budgets);
-    this.budgetReversed = this.budgets.reverse();
+    // this.budgetReversed = this.budgets.reverse();
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+    this.budgetReversed = this.budgets.sort(function(a: Budget, b: Budget){return b.money-a.money});
 
   }
 

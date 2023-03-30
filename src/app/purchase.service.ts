@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class PurchaseService {
 
-  isPro = false;
+  isPro = true;
 
   constructor() { }
 }

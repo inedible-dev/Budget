@@ -33,7 +33,7 @@ import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { PurchaseService } from './../../purchase.service'
 import { AlertController } from '@ionic/angular';
 import { IncomeExpense } from './../../incomeExpense.model'
-import {IAPProduct, InAppPurchase2} from '@awesome-cordova-plugins/in-app-purchase-2/ngx'
+import { IAPProduct, InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx'
 
 @Component({
   selector: 'app-budget',
@@ -131,7 +131,6 @@ export class BudgetPage implements OnInit {
     return str;
   }
   async onExportPressed() {
-    
     if (this.purchaseService.isPro == true) {
       const newBudget: IncomeExpense[] = this.budget.incomeExpense;
       var banana = newBudget.filter(e => {
@@ -169,6 +168,13 @@ export class BudgetPage implements OnInit {
         a.present();
       })
     }
+  }
+
+  onPaidPressed(id: string) {
+    const item = document.getElementById(`${id}`);
+    item.className = item.className + 'line-through';
+    // this.budget.incomeExpense[`${id}`].class = this.budget.incomeExpense[`${id}`].class + 'line-through';
+
   }
 
 }

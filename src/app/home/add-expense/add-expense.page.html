@@ -18,6 +18,10 @@
         <ion-label position="fixed">Amount</ion-label>
         <ion-input formControlName="amount" placeholder="Amount of expense" type="number" required></ion-input>
       </ion-item>
+      <ion-item (click)="openPicker()">
+        <ion-label position="fixed">Type</ion-label>
+        <ion-label>{{ type }}</ion-label>
+      </ion-item>
     </ion-list>
     <div class="w-full flex flex-row justify-center items-center mt-[20px]">
       <ion-button type="submit">Confirm</ion-button>

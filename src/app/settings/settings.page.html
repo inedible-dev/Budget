@@ -29,7 +29,65 @@
         </ion-item>
       </ion-list>
     </ion-list>
+    <!-- <div class="flex flex-row flex-wrap">
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#4287f5] self-center mr-[5px]"></div>
+          <h1>Food&Drink {{ percentFood }}%</h1>
+        </div>
+      </div>
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#f54242] self-center mr-[5px]"></div>
+          <h1>Transportation {{ percentTransportation }}%</h1>
+        </div>
+      </div>
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#5df542] self-center mr-[5px]"></div>
+          <h1>Entertainment {{ percentEntertainment }}%</h1>
+        </div>
+      </div>
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#f5d742] self-center mr-[5px]"></div>
+          <h1>Shopping {{ percentShopping }}%</h1>
+        </div>
+      </div>
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#f57e42] self-center mr-[5px]"></div>
+          <h1>Health {{ percentHealth }}%</h1>
+        </div>
+      </div>
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#9e42f5] self-center mr-[5px]"></div>
+          <h1>Education {{ percentEducation }}%</h1>
+        </div>
+      </div>
+      <div class="mt-[20px] ml-[20px]">
+        <div class="flex flex-row">
+          <div class="w-[10px] h-[10px] bg-[#f5428d] self-center mr-[5px]"></div>
+          <h1>Other {{ percentOther }}%</h1>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="chart-container">
+      <canvas  id="MyChart" >{{ chart }}</canvas>
+    </div>
+
+
   </form>
+  <!-- <ejs-accumulationchart id="chart-container" [legendSettings]='legendSettings' [tooltip]="toolTip">
+    <e-accumulation-series-collection> -->
+        <!-- <e-accumulation-series innerRadius="60" [pointColorMapping]="pointColorMapping" [dataSource]='dataSource' xName='x' yName='y' [startAngle]='270' [endAngle]='90'></e-accumulation-series> -->
+        <!-- <e-accumulation-series innerRadius="60" [pointColorMapping]="pointColorMapping" [dataSource]='dataSource' xName='x' yName='y'></e-accumulation-series>
+    </e-accumulation-series-collection>
+  </ejs-accumulationchart> -->
+
+
   <div class="fixed bottom-0 w-full flex flex-row justify-center border-[#C6C6C6] bg-[#F7F7F7] h-[80px]"
       style="border-top-width: 0.46px;">
       <ion-button class="w-[98%]" (click)="onCurrencyFormSubmitted()" color="primary">Apply</ion-button>

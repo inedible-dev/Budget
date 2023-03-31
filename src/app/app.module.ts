@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
 import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+// import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [AppComponent],

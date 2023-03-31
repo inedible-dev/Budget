@@ -4,5 +4,6 @@ export interface IncomeExpense {
   money: number;
   color?: string;
   class?: string;
+  type?: string;
 }
 

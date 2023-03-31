@@ -9,6 +9,7 @@ import { Budget } from './../../budget.model';
 import { BudgetsServiceService } from './../../budgets-service.service';
 import { IncomeExpense } from './../../incomeExpense.model';
 import { FormBuilder } from '@angular/forms';
+import { PickerController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-expense',
@@ -20,15 +21,17 @@ export class AddExpensePage implements OnInit {
   income: string;
   budget: Budget;
   theId: string;
+  type: string;
 
   expenseForm = this.formBuilder.group({
     name: '',
     amount: 0
   });
 
-  constructor(private navController: NavController, private activatedRoute: ActivatedRoute, private budgetsService: BudgetsServiceService, private formBuilder: FormBuilder) { }
+  constructor(private navController: NavController, private activatedRoute: ActivatedRoute, private budgetsService: BudgetsServiceService, private formBuilder: FormBuilder, private pickerContrl: PickerController) { }
 
   ngOnInit() {
+    this.type = 'Food&Drink';
     this.activatedRoute.paramMap.subscribe(e => {
       if (!e.get('budgetId')) {
         this.navController.navigateBack('/home');
@@ -59,7 +62,7 @@ export class AddExpensePage implements OnInit {
     }
     let cacheMoney = -Math.abs(+this.expenseForm.value.amount);
 
-    let cacheBuilder: IncomeExpense = { id: this.makeid(24), color: 'red-500', title: this.expenseForm.value.name, money: -Math.abs(+this.expenseForm.value.amount) };
+    let cacheBuilder: IncomeExpense = { id: this.makeid(24), color: 'red-500', title: this.expenseForm.value.name, money: -Math.abs(+this.expenseForm.value.amount), type: this.type };
     this.budget.incomeExpense = this.budget.incomeExpense.concat(...[cacheBuilder]);
     this.budgetsService.budgets = this.budgetsService.budgets.filter(p => {
       return p.id !== this.theId;
@@ -77,6 +80,60 @@ export class AddExpensePage implements OnInit {
     this.budgetsService.budgets = this.budgetsService.budgets.concat(...[this.budget]);
     this.budgetsService.setLocalForage();
     this.navController.navigateBack(['/', 'home', this.theId]);
+  }
+  async openPicker() {
+    const picker = await this.pickerContrl.create({
+      columns: [
+        {
+          name: 'types',
+          options: [
+            {
+              text: 'Food&Drink',
+              value: 'Food&Drink',
+            },
+            {
+              text: 'Transportation',
+              value: 'Transportation',
+            },
+            {
+              text: 'Entertainment',
+              value: 'Entertainment',
+            },
+            {
+              text: 'Shopping',
+              value: 'Shopping',
+            },
+            {
+              text: 'Health',
+              value: 'Health',
+            },
+            {
+              text: 'Education',
+              value: 'Education',
+            },
+            {
+              text: 'Other',
+              value: 'Other',
+            },
+          ],
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirm',
+          handler: (value) => {
+            // window.alert(`You selected: ${value.types.value}`);
+            this.type = value.types.value;
+          },
+        },
+      ],
+    });
+
+    await picker.present();
   }
 
 }

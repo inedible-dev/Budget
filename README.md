@@ -1,2 +1,2 @@
 # Budget
-Budget managing app
+Budget tracking app

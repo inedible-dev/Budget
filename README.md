@@ -1,3 +1,5 @@
+**This Repository is <ins>*ARCHIVED*</ins> and will no longer be maintained. However, there might be some occasional bug fixes.**
+
 # Budget
 This is a budget tracker app.
 
